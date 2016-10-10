@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.0.1)
+  - JASON (3.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - JASON (~> 3.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  JASON: cf4d762e61428a20db8eaef2acb6a569a10c1801
+
+PODFILE CHECKSUM: d1eceafe8a3b77d5bf61759111e580b6a9049cf5
+
+COCOAPODS: 1.0.1
