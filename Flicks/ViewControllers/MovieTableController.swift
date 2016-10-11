@@ -7,20 +7,33 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MovieTableController: UITableViewController {
-    var movieService : MovieService = MovieService()
-    
+//    var movieService : MovieService = MovieService()
+    var nowPlayingFeed : NowPlayingFeed = NowPlayingFeed()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieService.loadNowPlaying()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Following works with inline closure
+/*        movieService.loadNowPlaying(error:
+            {error in print("Error: \(error.description)")},
+                                    success:
+            { json in print("json: \(json)") }
+        ) */
+        // Can't get the following to compile calling
+        nowPlayingFeed.loadNowPlaying(error:self.onError(error:),success:self.onSuccess)
     }
 
+    func onSuccess() {
+//        print("SUCCESS json: \(json)")
+        self.tableView.reloadData()
+    }
+    
+    func onError(error: NSError) {
+        print("Error: \(error.description)")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,23 +43,27 @@ class MovieTableController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return nowPlayingFeed.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        if let movieCell = cell as? MovieTableCell {
+            if let movie = nowPlayingFeed.getMovieAtIndex(index: indexPath.row) {
+                movieCell.setFromMovie(movie: movie)
+            }
+        }
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

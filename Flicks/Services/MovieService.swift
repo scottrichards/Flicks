@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import JASON
+import SwiftyJSON
 
 class MovieService: NSObject {
     static let APIKey = "55935c499e7ace3a866b7ca1847f462e"
@@ -21,20 +21,16 @@ class MovieService: NSObject {
         static let api_key = "api_key"
     }
     
-    func loadNowPlaying(failure : ((NSError) -> ())? = nil,
-                  success : (() -> ())? = nil
+    func loadNowPlaying(error : ((NSError) -> ())? = nil,
+                  success : ((JSON) -> ())? = nil
         )
     {
         
-        var headers: [String: String]?
-        var parameters: [String: String]?
+//        var headers: [String: String]?
+//        var parameters: [String: String]?
         
         let apiEndPoint = URLs.NowPlaying + "?" + Params.api_key + "=" + MovieService.APIKey
-//        Alamofire.request().responseJASON {
-//            response in
-//            
-//            
-//        }
+
         Alamofire.request(apiEndPoint).responseJSON {
             response in
             
@@ -42,30 +38,16 @@ class MovieService: NSObject {
             print(response.response) // HTTP URL response
             print(response.data)     // server data
             print(response.result)   // result of response serialization
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+            if let jsonData = response.data {
+                let json = JSON(data: jsonData)
+                print("json: \(json)")
+                if let success = success {
+                    success(json)
+                }
             }
         }
 
         
-        //Alamofire.request(apiEndPoint, method: .get, parameters: parameters, encoding: <#T##ParameterEncoding#>, headers: HTTPHeaders?)
-//        Alamofire.request(.GET, apiEndPoint, headers: headers, parameters: parameters).validate().responseJSON { response in
-//            switch response.result {
-//            case .Success:
-//                if let jsonData = response.data {
-//                    //                    self.json = JSON(data: data)
-//                    //                    print("json: \(self.json)")
-//                    if let succeed = success {
-//                        succeed(response)
-//                    }
-//                }
-//            case .Failure(let error):
-//                print(error)
-//                if let fail = failure {
-//                    fail(error)
-//                }
-//            }
-//        }
     }
 
 }

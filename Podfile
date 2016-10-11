@@ -7,7 +7,7 @@ target 'Flicks' do
 
   # Pods for Flicks
   pod 'Alamofire'
-  pod 'JASON', '~> 3.0'
+  pod 'SwiftyJSON'
 
   target 'FlicksTests' do
     inherit! :search_paths
