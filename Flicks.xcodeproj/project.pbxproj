@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0173AAC91DAC04840051D6BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173AAC81DAC04840051D6BC /* AppDelegate.swift */; };
-		0173AACB1DAC04840051D6BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173AACA1DAC04840051D6BC /* ViewController.swift */; };
 		0173AACE1DAC04840051D6BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0173AACC1DAC04840051D6BC /* Main.storyboard */; };
 		0173AAD01DAC04840051D6BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0173AACF1DAC04840051D6BC /* Assets.xcassets */; };
 		0173AAD31DAC04840051D6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0173AAD11DAC04840051D6BC /* LaunchScreen.storyboard */; };
 		0173AADE1DAC04840051D6BC /* FlicksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173AADD1DAC04840051D6BC /* FlicksTests.swift */; };
+		01A7E9111DAC4A3400057CA6 /* MovieTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A7E9101DAC4A3400057CA6 /* MovieTableController.swift */; };
+		01A7E9141DAC4B3800057CA6 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A7E9131DAC4B3800057CA6 /* MovieService.swift */; };
 		1AB5191F9C3DB888EA28FF0A /* Pods_FlicksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA6112F2378C5094C70E23F /* Pods_FlicksTests.framework */; };
 		C86DD791580E09322E6D6B87 /* Pods_Flicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA79566914AFBACFFC96C65 /* Pods_Flicks.framework */; };
 /* End PBXBuildFile section */
@@ -30,7 +31,6 @@
 /* Begin PBXFileReference section */
 		0173AAC51DAC04840051D6BC /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0173AAC81DAC04840051D6BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0173AACA1DAC04840051D6BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0173AACD1DAC04840051D6BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0173AACF1DAC04840051D6BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0173AAD21DAC04840051D6BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 		0173AAD91DAC04840051D6BC /* FlicksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlicksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0173AADD1DAC04840051D6BC /* FlicksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicksTests.swift; sourceTree = "<group>"; };
 		0173AADF1DAC04840051D6BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01A7E9101DAC4A3400057CA6 /* MovieTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableController.swift; sourceTree = "<group>"; };
+		01A7E9131DAC4B3800057CA6 /* MovieService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		255BDFF3CEFD317401BB7580 /* Pods-Flicks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.debug.xcconfig"; sourceTree = "<group>"; };
 		55849FB7938902245A9A3F5C /* Pods-Flicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.release.xcconfig"; sourceTree = "<group>"; };
 		92554690A5669B33E63C087D /* Pods-FlicksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlicksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlicksTests/Pods-FlicksTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,11 +92,12 @@
 			isa = PBXGroup;
 			children = (
 				0173AAC81DAC04840051D6BC /* AppDelegate.swift */,
-				0173AACA1DAC04840051D6BC /* ViewController.swift */,
-				0173AACC1DAC04840051D6BC /* Main.storyboard */,
 				0173AACF1DAC04840051D6BC /* Assets.xcassets */,
-				0173AAD11DAC04840051D6BC /* LaunchScreen.storyboard */,
 				0173AAD41DAC04840051D6BC /* Info.plist */,
+				0173AAD11DAC04840051D6BC /* LaunchScreen.storyboard */,
+				0173AACC1DAC04840051D6BC /* Main.storyboard */,
+				01A7E9121DAC4B1900057CA6 /* Services */,
+				01A7E90F1DAC4A1200057CA6 /* ViewControllers */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -106,6 +109,22 @@
 				0173AADF1DAC04840051D6BC /* Info.plist */,
 			);
 			path = FlicksTests;
+			sourceTree = "<group>";
+		};
+		01A7E90F1DAC4A1200057CA6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				01A7E9101DAC4A3400057CA6 /* MovieTableController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		01A7E9121DAC4B1900057CA6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				01A7E9131DAC4B3800057CA6 /* MovieService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4E134883CB81C24D22C84899 /* Pods */ = {
@@ -334,7 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0173AACB1DAC04840051D6BC /* ViewController.swift in Sources */,
+				01A7E9141DAC4B3800057CA6 /* MovieService.swift in Sources */,
+				01A7E9111DAC4A3400057CA6 /* MovieTableController.swift in Sources */,
 				0173AAC91DAC04840051D6BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
