@@ -18,6 +18,7 @@ class MovieService: NSObject {
         static let NowPlaying = Endpoint + "/now_playing"
         static let ImageHost = "https://image.tmdb.org"
         static let Poster150 = ImageHost + "/t/p/w150"
+        static let Poster500 = ImageHost + "/t/p/w500"
     }
     struct Params {
         static let api_key = "api_key"
