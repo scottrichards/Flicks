@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class MovieTableCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
@@ -29,18 +30,16 @@ class MovieTableCell: UITableViewCell {
         self.title.text = movie.title
         self.overview.text = movie.overview
         if let posterPath = movie.poster {
-            let posterURL = MovieService.URLs.Poster150 + posterPath + MovieService.appendAPIKey()
+            let posterURL = MovieService.URLs.Poster150 + posterPath // + MovieService.appendAPIKey()
             print("posterURL: \(posterURL)")
-//            Alamofire.request(.GET, posterURL).responseImage { response in
-//                // if we got an image response set the profile image and hide the label otherwise be sure to show intials label
-//                if let image = response.result.value {
-//                    self.profileImageView.image = image
-//                    self.initialsLabel.hidden = true
-//                } else {
-//                    self.initialsLabel.hidden = false
-//                    self.profileImageView.image = nil
-//                }
-//            }
+            Alamofire.request(posterURL).responseImage { response in
+                // if we got an image response set the profile image and hide the label otherwise be sure to show intials label
+                if let image = response.result.value {
+                    self.posterImageView.image = image
+                } else {
+                    self.posterImageView.image = nil
+                }
+            }
         } else {
             posterImageView.image = nil
         }

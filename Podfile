@@ -7,6 +7,7 @@ target 'Flicks' do
 
   # Pods for Flicks
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SwiftyJSON'
 
   target 'FlicksTests' do
