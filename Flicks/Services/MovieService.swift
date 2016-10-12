@@ -16,6 +16,7 @@ class MovieService: NSObject {
         static let Endpoint = "https://api.themoviedb.org/3/movie"
         static let Search = Endpoint + "/search"
         static let NowPlaying = Endpoint + "/now_playing"
+        static let Poster150 = Endpoint + "/t/p/w150"
     }
     struct Params {
         static let api_key = "api_key"
@@ -46,8 +47,11 @@ class MovieService: NSObject {
                 }
             }
         }
-
-        
+    }
+    
+    class func appendAPIKey() -> String {
+        let apiKeyStr = "?" + Params.api_key + "=" + MovieService.APIKey
+        return apiKeyStr
     }
 
 }

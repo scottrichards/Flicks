@@ -11,7 +11,6 @@ import SwiftyJSON
 
 class NowPlayingFeed: NSObject {
     var movieService : MovieService = MovieService()
-//    var json : JSON?
     var movieList : [Movie] = [Movie]()
     
     var count : Int {
