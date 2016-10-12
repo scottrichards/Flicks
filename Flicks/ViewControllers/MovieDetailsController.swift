@@ -45,6 +45,9 @@ class MovieDetailsController: UIViewController {
     }
     
 
+    @IBAction func doBack(_ sender: AnyObject) {
+        self.navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 
