@@ -18,6 +18,7 @@
 		01A7E91C1DAD708A00057CA6 /* MovieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A7E91B1DAD708A00057CA6 /* MovieTableCell.swift */; };
 		01A7E9201DAEA79700057CA6 /* MovieDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A7E91F1DAEA79700057CA6 /* MovieDetailsController.swift */; };
 		01A7E9231DAEA9E700057CA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A7E9211DAEA9E700057CA6 /* Main.storyboard */; };
+		01A7E9251DAEBA3700057CA6 /* PlayTrailerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A7E9241DAEBA3700057CA6 /* PlayTrailerController.swift */; };
 		09AD9221C3AB71045B5920E2 /* Pods_FlicksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2B8B7B049DDE173099DA08 /* Pods_FlicksTests.framework */; };
 		38EF4F2C94402C11AA5A9EE4 /* Pods_Flicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABEA3EFEA0607207726CF14 /* Pods_Flicks.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		01A7E91B1DAD708A00057CA6 /* MovieTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableCell.swift; sourceTree = "<group>"; };
 		01A7E91F1DAEA79700057CA6 /* MovieDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailsController.swift; sourceTree = "<group>"; };
 		01A7E9221DAEA9E700057CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		01A7E9241DAEBA3700057CA6 /* PlayTrailerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTrailerController.swift; sourceTree = "<group>"; };
 		1A2B8B7B049DDE173099DA08 /* Pods_FlicksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlicksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ABEA3EFEA0607207726CF14 /* Pods_Flicks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flicks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE310A1B86C71D17CB67CEF /* Pods-FlicksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlicksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlicksTests/Pods-FlicksTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				01A7E9101DAC4A3400057CA6 /* MovieTableController.swift */,
 				01A7E91A1DAD706C00057CA6 /* TableViewCells */,
 				01A7E91F1DAEA79700057CA6 /* MovieDetailsController.swift */,
+				01A7E9241DAEBA3700057CA6 /* PlayTrailerController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				01A7E9141DAC4B3800057CA6 /* MovieService.swift in Sources */,
 				01A7E9111DAC4A3400057CA6 /* MovieTableController.swift in Sources */,
 				0173AAC91DAC04840051D6BC /* AppDelegate.swift in Sources */,
+				01A7E9251DAEBA3700057CA6 /* PlayTrailerController.swift in Sources */,
 				01A7E9171DAD3B8B00057CA6 /* NowPlayingFeed.swift in Sources */,
 				01A7E9191DAD62BC00057CA6 /* Movie.swift in Sources */,
 				01A7E91C1DAD708A00057CA6 /* MovieTableCell.swift in Sources */,

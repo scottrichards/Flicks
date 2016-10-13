@@ -1,0 +1,107 @@
+{
+  "adult": false,
+  "backdrop_path": "/qXQinDhDZkTiqEGLnav0h1YSUu8.jpg",
+  "belongs_to_collection": null,
+  "budget": 110,
+  "genres": [
+    {
+      "id": 14,
+      "name": "Fantasy"
+    }
+  ],
+  "homepage": "http://www.foxmovies.com/movies/miss-peregrines-home-for-peculiar-children",
+  "id": 283366,
+  "imdb_id": "tt1935859",
+  "original_language": "en",
+  "original_title": "Miss Peregrine's Home for Peculiar Children",
+  "overview": "A teenager finds himself transported to an island where he must help protect a group of orphans with special powers from creatures intent on destroying them.",
+  "popularity": 21.465473,
+  "poster_path": "/uSHjeRVuObwdpbECaXJnvyDoeJK.jpg",
+  "production_companies": [
+    {
+      "name": "Chernin Entertainment",
+      "id": 7076
+    },
+    {
+      "name": "Tim Burton Productions",
+      "id": 8601
+    },
+    {
+      "name": "Scope Pictures",
+      "id": 11199
+    },
+    {
+      "name": "Bulletproof Cupid",
+      "id": 54850
+    },
+    {
+      "name": "St. Petersburg Clearwater Film Commission",
+      "id": 68621
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2016-09-28",
+  "revenue": 40,
+  "runtime": 127,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Stay peculiar",
+  "title": "Miss Peregrine's Home for Peculiar Children",
+  "video": false,
+  "vote_average": 6.2,
+  "vote_count": 165
+}
+
+Trailers
+
+GET
+/movie/{movie_id}/videos
+
+YouTube Video 
+https://youtu.be/DN1uhnnKscY
+
+{
+  "id": 283366,
+  "results": [
+    {
+      "id": "56e8c5ac9251417bc3001419",
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "key": "tV_IhWE4LP0",
+      "name": "Official Trailer",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer"
+    },
+    {
+      "id": "57992f3292514124c700302d",
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "key": "TkTa-fk3oTk",
+      "name": "Inside Tim Burton's Miss Peregrine's Home For Peculiar Children",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Featurette"
+    },
+    {
+      "id": "57d95c63c3a3685342005eb4",
+      "iso_639_1": "en",
+      "iso_3166_1": "US",
+      "key": "DN1uhnnKscY",
+      "name": "Official Trailer 2",
+      "site": "YouTube",
+      "size": 1080,
+      "type": "Trailer"
+    }
+  ]
+}

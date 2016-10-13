@@ -48,14 +48,16 @@ class MovieDetailsController: UIViewController {
     @IBAction func doBack(_ sender: AnyObject) {
         self.navigationController?.popViewController(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
+  
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Pass the selected moview to the destination controller
+        if let playTrailerController = segue.destination as? PlayTrailerController {
+            playTrailerController.movie = movie
+        }
+        
     }
-    */
 
 }
