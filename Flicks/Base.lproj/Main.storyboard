@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fUl-OG-4K0" id="riD-Lg-iZ4">
-                                    <frame key="frameInset" width="342" height="199"/>
+                                    <frame key="frameInset" width="341" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PwL-CG-Lc5">
@@ -113,7 +113,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Watch"/>
                                 <connections>
-                                    <segue destination="yId-s4-Wos" kind="modal" id="AAc-or-KgA"/>
+                                    <segue destination="yId-s4-Wos" kind="push" id="AAc-or-KgA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -143,12 +143,41 @@
                     <view key="view" contentMode="scaleToFill" id="8VD-Sq-1HL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" id="By8-gF-MlR" customClass="PlayerView" customModule="Flicks" customModuleProvider="target">
+                                <frame key="frameInset" minY="84" width="375" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I8p-ZM-0Zp">
+                                <frame key="frameInset" minX="13" minY="283" width="50" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ScanBackwardButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SIh-E1-AFb">
+                                <frame key="frameInset" minX="79" minY="283" width="35" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="PlayButton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dgu-4H-6Mm">
+                                <frame key="frameInset" minX="131" minY="284" width="49" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ScanForwardButton"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="vVZ-iJ-RHg"/>
+                    <connections>
+                        <outlet property="fastForwardButton" destination="dgu-4H-6Mm" id="RU5-L7-33B"/>
+                        <outlet property="playPauseButton" destination="SIh-E1-AFb" id="kas-KI-w9y"/>
+                        <outlet property="playerView" destination="By8-gF-MlR" id="KUB-qj-VxS"/>
+                        <outlet property="rewindButton" destination="I8p-ZM-0Zp" id="64T-Oz-b6T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ac9-Zf-Bed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="194"/>
+            <point key="canvasLocation" x="2683.5" y="193.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iPa-Pc-FxQ">
@@ -156,6 +185,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="O91-Kn-Mzg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="YTi-d4-4ar">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -187,6 +217,11 @@
             <point key="canvasLocation" x="881.5" y="193.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="PlayButton" width="21" height="22"/>
+        <image name="ScanBackwardButton" width="29" height="16"/>
+        <image name="ScanForwardButton" width="29" height="16"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
