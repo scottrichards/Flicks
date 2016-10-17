@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        addTabBar()
+        return true
+    }
+    
+    // Add the tab bar
+    private func addTabBar() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name:"Main", bundle: nil)
         let nowPlayingNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
@@ -23,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nowPlayingNavController.tabBarItem.image = UIImage(named:"projector_50")
         let nowPlayingViewController = nowPlayingNavController.topViewController as! MovieTableController
         nowPlayingViewController.feedType = MovieService.URLs.now_playing
-    
+        
         
         let topRatedNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
         topRatedNavController.tabBarItem.title = "Top Rated"
@@ -36,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

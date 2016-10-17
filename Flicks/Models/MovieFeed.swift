@@ -42,9 +42,15 @@ class MovieFeed : NSObject {
                                             error(errorResult)
                                         }},
                                     success: { jsonData in
-                                        self.parseNowPlayingJSON(json: jsonData)
-                                        if let success = success {
-                                            success()
+                                        if (self.parseFeedJSON(json: jsonData)) {
+                                            if let success = success {
+                                                success()
+                                            }
+                                        } else {
+                                            let parseError = NSError(domain: Bundle.main.bundleIdentifier!, code: -1)
+                                            if let error = error {
+                                                error(parseError)
+                                            }
                                         }
         })
     }
@@ -58,15 +64,19 @@ class MovieFeed : NSObject {
     }
     
     // parse the json result into a list of movies
-    func parseNowPlayingJSON(json:JSON) {
-        if let dataNodes = json.dictionary!["results"] {
-            // If we had laoded items before sat lastLoadFirstItem to
-            if let dataArray = dataNodes.array {
-                for dataNode in dataArray {
-                    let movie = Movie(movieJSON: dataNode)
-                    movieList.append(movie)
+    func parseFeedJSON(json:JSON) -> Bool {
+        if let dictionary = json.dictionary {
+            if let dataNodes = dictionary["results"] {
+                // If we had laoded items before sat lastLoadFirstItem to
+                if let dataArray = dataNodes.array {
+                    for dataNode in dataArray {
+                        let movie = Movie(movieJSON: dataNode)
+                        movieList.append(movie)
+                    }
+                    return true
                 }
             }
         }
+        return false
     }
 }

@@ -16,6 +16,7 @@ class MovieTableController: UITableViewController {
     var selectedMovie : Movie?
     var feedType : String = "now_playing"
     var loadingProgress : MBProgressHUD?
+    var loadingError : LoadingView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,15 @@ class MovieTableController: UITableViewController {
     func onSuccess() {
         loadingProgress?.hide(animated: true)
         self.tableView.reloadData()
+        loadingError = LoadingView.addToView(view: self.view, animated: true)
+        loadingError?.message = "Loaded Movies"
+        loadingProgress?.hide(animated: true)
     }
     
     func onError(error: NSError) {
         print("Error: \(error.description)")
+        loadingError = LoadingView.addToView(view: self.view, animated: true)
+        loadingError?.message = error.description
         loadingProgress?.hide(animated: true)
     }
     
