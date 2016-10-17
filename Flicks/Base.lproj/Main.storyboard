@@ -201,7 +201,7 @@
         <!--Now Playing-->
         <scene sceneID="DWn-Ke-lD7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jpn-KM-rTk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MoviesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Jpn-KM-rTk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Now Playing" image="projector_50" id="f8w-DC-QPw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v7T-ku-JfH">

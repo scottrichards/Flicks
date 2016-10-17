@@ -8,31 +8,32 @@
 
 import UIKit
 import SwiftyJSON
+import MBProgressHUD
 
 class MovieTableController: UITableViewController {
 //    var movieService : MovieService = MovieService()
     var nowPlayingFeed : NowPlayingFeed = NowPlayingFeed()
     var selectedMovie : Movie?
+    var feedType : String = "now_playing"
+    var loadingProgress : MBProgressHUD?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Following works with inline closure
-/*        movieService.loadNowPlaying(error:
-            {error in print("Error: \(error.description)")},
-                                    success:
-            { json in print("json: \(json)") }
-        ) */
+        loadingProgress = MBProgressHUD.showAdded(to: self.view, animated: true)
+        loadingProgress?.label.text = "Loading movies..."
         // Can't get the following to compile calling
         nowPlayingFeed.loadNowPlaying(error:self.onError(error:),success:self.onSuccess)
     }
 
     func onSuccess() {
-//        print("SUCCESS json: \(json)")
+        loadingProgress?.hide(animated: true)
         self.tableView.reloadData()
     }
     
     func onError(error: NSError) {
         print("Error: \(error.description)")
+        loadingProgress?.hide(animated: true)
     }
     
     override func didReceiveMemoryWarning() {

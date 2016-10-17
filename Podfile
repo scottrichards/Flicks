@@ -9,6 +9,7 @@ target 'Flicks' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SwiftyJSON'
+  pod 'MBProgressHUD'
 
   target 'FlicksTests' do
     inherit! :search_paths
