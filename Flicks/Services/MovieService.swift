@@ -15,7 +15,8 @@ class MovieService: NSObject {
     struct URLs {
         static let Endpoint = "https://api.themoviedb.org/3/movie"
         static let Search = Endpoint + "/search"
-        static let NowPlaying = Endpoint + "/now_playing"
+        static let now_playing = "now_playing"
+        static let top_rated = "top_rated"
         static let ImageHost = "https://image.tmdb.org"
         static let Poster150 = ImageHost + "/t/p/w150"
         static let Poster500 = ImageHost + "/t/p/w500"
@@ -23,8 +24,15 @@ class MovieService: NSObject {
     struct Params {
         static let api_key = "api_key"
     }
+    var feedType : String = MovieService.URLs.now_playing
     
-    func loadNowPlaying(error : ((NSError) -> ())? = nil,
+    convenience init(feedType : String)
+    {
+        self.init()
+        self.feedType = feedType
+    }
+    
+    func loadMovies(error : ((NSError) -> ())? = nil,
                   success : ((JSON) -> ())? = nil
         )
     {
@@ -32,7 +40,7 @@ class MovieService: NSObject {
 //        var headers: [String: String]?
 //        var parameters: [String: String]?
         
-        let apiEndPoint = URLs.NowPlaying + "?" + Params.api_key + "=" + MovieService.APIKey
+        let apiEndPoint = URLs.Endpoint + "/" + feedType + "?" + Params.api_key + "=" + MovieService.APIKey
 
         Alamofire.request(apiEndPoint).responseJSON {
             response in

@@ -20,6 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let storyboard = UIStoryboard(name:"Main", bundle: nil)
 //        let nowPlayingNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
 //        let nowPlayingViewController = nowPlayingNavController.topViewController as! MovieTableController
+//        nowPlayingViewController.feedType = MovieService.URLs.now_playing
+//        
+//        let topRatedNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+//        let topRatedViewController = topRatedNavController.topViewController as! MovieTableController
+//        topRatedViewController.feedType = MovieService.URLs.top_rated
+//        
+//        let tabBarController = UITabBarController()
+//        tabBarController.viewControllers = [nowPlayingViewController, topRatedViewController]
+//        
+//        window?.rootViewController = tabBarController
+//        window?.makeKeyAndVisible()
         return true
     }
 

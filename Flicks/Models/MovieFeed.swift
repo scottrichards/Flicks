@@ -9,9 +9,10 @@
 import UIKit
 import SwiftyJSON
 
-class NowPlayingFeed: NSObject {
+class MovieFeed : NSObject {
     var movieService : MovieService = MovieService()
     var movieList : [Movie] = [Movie]()
+ //   var feedType : String = "now_playing"
     
     var count : Int {
         get {
@@ -19,9 +20,19 @@ class NowPlayingFeed: NSObject {
         }
     }
     
-    func loadNowPlaying(error : ((NSError) -> ())? = nil,
+    override init() {
+        super.init()
+    }
+    
+    convenience init(feedType : String)
+    {
+        self.init()
+        movieService.feedType = feedType
+    }
+    
+    func loadMovies(error : ((NSError) -> ())? = nil,
                         success : (() -> ())? = nil) {
-        movieService.loadNowPlaying(error: { errorResult in
+        movieService.loadMovies(error: { errorResult in
                                         print("ERROR: \(errorResult.description)")
                                         if let error = error {
                                             error(errorResult)

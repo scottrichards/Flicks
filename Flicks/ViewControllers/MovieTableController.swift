@@ -12,7 +12,7 @@ import MBProgressHUD
 
 class MovieTableController: UITableViewController {
 //    var movieService : MovieService = MovieService()
-    var nowPlayingFeed : NowPlayingFeed = NowPlayingFeed()
+    var movieFeed : MovieFeed = MovieFeed()
     var selectedMovie : Movie?
     var feedType : String = "now_playing"
     var loadingProgress : MBProgressHUD?
@@ -23,7 +23,7 @@ class MovieTableController: UITableViewController {
         loadingProgress = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingProgress?.label.text = "Loading movies..."
         // Can't get the following to compile calling
-        nowPlayingFeed.loadNowPlaying(error:self.onError(error:),success:self.onSuccess)
+        movieFeed.loadMovies(error:self.onError(error:),success:self.onSuccess)
     }
 
     func onSuccess() {
@@ -50,14 +50,14 @@ class MovieTableController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return nowPlayingFeed.count
+        return movieFeed.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if let movieCell = cell as? MovieTableCell {
-            if let movie = nowPlayingFeed.getMovieAtIndex(index: indexPath.row) {
+            if let movie = movieFeed.getMovieAtIndex(index: indexPath.row) {
                 movieCell.setFromMovie(movie: movie)
             }
         }
@@ -68,11 +68,11 @@ class MovieTableController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedMovie = nowPlayingFeed.getMovieAtIndex(index: indexPath.row)
+        selectedMovie = movieFeed.getMovieAtIndex(index: indexPath.row)
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        selectedMovie = nowPlayingFeed.getMovieAtIndex(index: indexPath.row)
+        selectedMovie = movieFeed.getMovieAtIndex(index: indexPath.row)
         return indexPath
     }
 
