@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013EB5E71DB4EF8200D2EC01 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EB5E61DB4EF8200D2EC01 /* LoadingView.swift */; };
 		017127801DAF53F800F1B6B2 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0171277F1DAF53F800F1B6B2 /* PlayerView.swift */; };
 		017127821DAFDF5D00F1B6B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 017127811DAFDF5D00F1B6B2 /* Images.xcassets */; };
 		0173AAC91DAC04840051D6BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173AAC81DAC04840051D6BC /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		013EB5E61DB4EF8200D2EC01 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		0171277F1DAF53F800F1B6B2 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		017127811DAFDF5D00F1B6B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0173AAC51DAC04840051D6BC /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				0171277F1DAF53F800F1B6B2 /* PlayerView.swift */,
+				013EB5E61DB4EF8200D2EC01 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				017127801DAF53F800F1B6B2 /* PlayerView.swift in Sources */,
 				01A7E9141DAC4B3800057CA6 /* MovieService.swift in Sources */,
 				01A7E9111DAC4A3400057CA6 /* MovieTableController.swift in Sources */,
+				013EB5E71DB4EF8200D2EC01 /* LoadingView.swift in Sources */,
 				0173AAC91DAC04840051D6BC /* AppDelegate.swift in Sources */,
 				01A7E9251DAEBA3700057CA6 /* PlayTrailerController.swift in Sources */,
 				01A7E9171DAD3B8B00057CA6 /* NowPlayingFeed.swift in Sources */,

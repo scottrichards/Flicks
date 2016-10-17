@@ -22,7 +22,7 @@ class PlayTrailerController: UIViewController {
         "hasProtectedContent"
     ]
     
-    static let movieURL = "https://devimages.apple.com.edgekey.net/samplecode/avfoundationMedia/AVFoundationQueuePlayer_Progressive.mov"
+    let movieURL = "https://devimages.apple.com.edgekey.net/samplecode/avfoundationMedia/AVFoundationQueuePlayer_Progressive.mov"
     
     var movie : Movie?
     let player = AVQueuePlayer()
@@ -84,7 +84,14 @@ class PlayTrailerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = movie?.title
-        // Do any additional setup after loading the view.
+        loadMovie(movieURL:movieURL)
+    }
+    
+    func loadMovie(movieURL:String) {
+        if let url = URL(string:movieURL) {
+            let asset = AVURLAsset(url: url, options: [:])
+            asynchronouslyLoadURLAsset(asset: asset, title: movieURL)
+        }
     }
     
     override func didReceiveMemoryWarning() {
