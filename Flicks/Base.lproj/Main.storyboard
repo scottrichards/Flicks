@@ -105,17 +105,17 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dRJ-nx-K3w">
+                                        <frame key="frameInset" minX="317" minY="8" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="FilmWhite"/>
+                                        <connections>
+                                            <segue destination="yId-s4-Wos" kind="push" id="AAc-or-KgA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dRJ-nx-K3w">
-                                <frame key="frameInset" minX="16" minY="379" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Watch"/>
-                                <connections>
-                                    <segue destination="yId-s4-Wos" kind="push" id="AAc-or-KgA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4P-Z8-sLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="194"/>
+            <point key="canvasLocation" x="2101.5" y="193.5"/>
         </scene>
         <!--Play Trailer Controller-->
         <scene sceneID="0Bv-xg-Rzz">
@@ -201,7 +201,7 @@
         <scene sceneID="DWn-Ke-lD7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jpn-KM-rTk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="f8w-DC-QPw"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="trailer_50" id="f8w-DC-QPw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v7T-ku-JfH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -218,9 +218,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FilmWhite" width="50" height="50"/>
         <image name="PlayButton" width="21" height="22"/>
         <image name="ScanBackwardButton" width="29" height="16"/>
         <image name="ScanForwardButton" width="29" height="16"/>
+        <image name="trailer_50" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
