@@ -11,7 +11,7 @@ import SwiftyJSON
 import MBProgressHUD
 
 class MovieTableController: UITableViewController {
-//    var movieService : MovieService = MovieService()
+
     var movieFeed : MovieFeed = MovieFeed()
     var selectedMovie : Movie?
     var feedType : String = "now_playing"
@@ -22,7 +22,10 @@ class MovieTableController: UITableViewController {
         // Following works with inline closure
         loadingProgress = MBProgressHUD.showAdded(to: self.view, animated: true)
         loadingProgress?.label.text = "Loading movies..."
+        movieFeed.feedType = feedType
         // Can't get the following to compile calling
+        self.title = feedType == MovieService.URLs.now_playing ? "Now Playing" : "Top Rated"
+        self.navigationController?.navigationBar.barTintColor = UIColor.lightGray
         movieFeed.loadMovies(error:self.onError(error:),success:self.onSuccess)
     }
 

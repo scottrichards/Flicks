@@ -16,21 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        let storyboard = UIStoryboard(name:"Main", bundle: nil)
-//        let nowPlayingNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
-//        let nowPlayingViewController = nowPlayingNavController.topViewController as! MovieTableController
-//        nowPlayingViewController.feedType = MovieService.URLs.now_playing
-//        
-//        let topRatedNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
-//        let topRatedViewController = topRatedNavController.topViewController as! MovieTableController
-//        topRatedViewController.feedType = MovieService.URLs.top_rated
-//        
-//        let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = [nowPlayingViewController, topRatedViewController]
-//        
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name:"Main", bundle: nil)
+        let nowPlayingNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+        nowPlayingNavController.tabBarItem.title = "Now Playing"
+        nowPlayingNavController.tabBarItem.image = UIImage(named:"projector_50")
+        let nowPlayingViewController = nowPlayingNavController.topViewController as! MovieTableController
+        nowPlayingViewController.feedType = MovieService.URLs.now_playing
+    
+        
+        let topRatedNavController = storyboard.instantiateViewController(withIdentifier: "MoviesNavigationController") as! UINavigationController
+        topRatedNavController.tabBarItem.title = "Top Rated"
+        topRatedNavController.tabBarItem.image = UIImage(named:"star_ticket_50")
+        let topRatedViewController = topRatedNavController.topViewController as! MovieTableController
+        topRatedViewController.feedType = MovieService.URLs.top_rated
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [nowPlayingNavController, topRatedNavController]
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
         return true
     }
 

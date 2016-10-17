@@ -12,7 +12,11 @@ import SwiftyJSON
 class MovieFeed : NSObject {
     var movieService : MovieService = MovieService()
     var movieList : [Movie] = [Movie]()
- //   var feedType : String = "now_playing"
+    var feedType : String = MovieService.URLs.now_playing {
+        didSet {
+            movieService.feedType = self.feedType
+        }
+    }
     
     var count : Int {
         get {
