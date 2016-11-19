@@ -118,7 +118,7 @@ extension UIImageView {
 
     // MARK: - Private - AssociatedKeys
 
-    fileprivate struct AssociatedKey {
+    private struct AssociatedKey {
         static var imageDownloader = "af_UIImageView.ImageDownloader"
         static var sharedImageDownloader = "af_UIImageView.SharedImageDownloader"
         static var activeRequestReceipt = "af_UIImageView.ActiveRequestReceipt"
@@ -352,7 +352,7 @@ extension UIImageView {
 
     // MARK: - Private - URL Request Helper Methods
 
-    fileprivate func urlRequest(with url: URL) -> URLRequest {
+    private func urlRequest(with url: URL) -> URLRequest {
         var urlRequest = URLRequest(url: url)
 
         for mimeType in DataRequest.acceptableImageContentTypes {
@@ -362,10 +362,10 @@ extension UIImageView {
         return urlRequest
     }
 
-    fileprivate func isURLRequestURLEqualToActiveRequestURL(_ urlRequest: URLRequestConvertible?) -> Bool {
+    private func isURLRequestURLEqualToActiveRequestURL(_ urlRequest: URLRequestConvertible?) -> Bool {
         if
             let currentRequestURL = af_activeRequestReceipt?.request.task?.originalRequest?.url,
-            let requestURL = urlRequest?.urlRequest?.url,
+            let requestURL = urlRequest?.urlRequest?.url where
             currentRequestURL == requestURL
         {
             return true

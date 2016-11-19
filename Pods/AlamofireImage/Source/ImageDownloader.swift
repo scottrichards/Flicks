@@ -35,12 +35,12 @@ import Cocoa
 /// to cancel active requests running on the `ImageDownloader` session. As a general rule, image download requests
 /// should be cancelled using the `RequestReceipt` instead of calling `cancel` directly on the `request` itself. The
 /// `ImageDownloader` is optimized to handle duplicate request scenarios as well as pending versus active downloads.
-open class RequestReceipt {
+public class RequestReceipt {
     /// The download request created by the `ImageDownloader`.
-    open let request: Request
+    public let request: Request
 
     /// The unique identifier for the image filters and completion handlers when duplicate requests are made.
-    open let receiptID: String
+    public let receiptID: String
 
     init(request: Request, receiptID: String) {
         self.request = request
@@ -54,7 +54,7 @@ open class RequestReceipt {
 /// By default, any download request with a cached image equivalent in the image cache will automatically be served the
 /// cached image representation. Additional advanced features include supporting multiple image filters and completion
 /// handlers for a single request.
-open class ImageDownloader {
+public class ImageDownloader {
     /// The completion handler closure used when an image download completes.
     public typealias CompletionHandler = (DataResponse<Image>) -> Void
 
@@ -92,13 +92,13 @@ open class ImageDownloader {
     // MARK: - Properties
 
     /// The image cache used to store all downloaded images in.
-    open let imageCache: ImageRequestCache?
+    public let imageCache: ImageRequestCache?
 
     /// The credential used for authenticating each download request.
-    open fileprivate(set) var credential: URLCredential?
+    public private(set) var credential: URLCredential?
 
     /// The underlying Alamofire `Manager` instance used to handle all download requests.
-    open let sessionManager: SessionManager
+    public let sessionManager: SessionManager
 
     let downloadPrioritization: DownloadPrioritization
     let maximumActiveDownloads: Int
@@ -107,12 +107,12 @@ open class ImageDownloader {
     var queuedRequests: [Request] = []
     var responseHandlers: [String: ResponseHandler] = [:]
 
-    fileprivate let synchronizationQueue: DispatchQueue = {
+    private let synchronizationQueue: DispatchQueue = {
         let name = String(format: "org.alamofire.imagedownloader.synchronizationqueue-%08x%08x", arc4random(), arc4random())
         return DispatchQueue(label: name)
     }()
 
-    fileprivate let responseQueue: DispatchQueue = {
+    private let responseQueue: DispatchQueue = {
         let name = String(format: "org.alamofire.imagedownloader.responsequeue-%08x%08x", arc4random(), arc4random())
         return DispatchQueue(label: name, attributes: .concurrent)
     }()
@@ -120,12 +120,12 @@ open class ImageDownloader {
     // MARK: - Initialization
 
     /// The default instance of `ImageDownloader` initialized with default values.
-    open static let `default` = ImageDownloader()
+    public static let `default` = ImageDownloader()
 
     /// Creates a default `URLSessionConfiguration` with common usage parameter values.
     ///
     /// - returns: The default `URLSessionConfiguration` instance.
-    open class func defaultURLSessionConfiguration() -> URLSessionConfiguration {
+    public class func defaultURLSessionConfiguration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
 
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders

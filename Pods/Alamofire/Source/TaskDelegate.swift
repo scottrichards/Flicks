@@ -31,7 +31,7 @@ open class TaskDelegate: NSObject {
     // MARK: Properties
 
     /// The serial operation queue used to execute all operations after the task completes.
-    open let queue: OperationQueue
+    open;; let queue: OperationQueue
 
     var task: URLSessionTask? {
         didSet { reset() }
@@ -185,7 +185,7 @@ class DataTaskDelegate: TaskDelegate, URLSessionDataDelegate {
     var progress: Progress
     var progressHandler: (closure: Request.ProgressHandler, queue: DispatchQueue)?
 
-    var dataStream: ((_ data: Data) -> Void)?
+    var dataStream: ((,_ data: Data) -> Void)?
 
     private var totalBytesReceived: Int64 = 0
     private var mutableData: Data
@@ -417,7 +417,7 @@ class UploadTaskDelegate: DataTaskDelegate {
         super.init(task: task)
     }
 
-    override func reset() {
+    func reset() {
         super.reset()
         uploadProgress = Progress(totalUnitCount: 0)
     }

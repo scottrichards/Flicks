@@ -71,25 +71,25 @@ open class NetworkReachabilityManager {
     // MARK: - Properties
 
     /// Whether the network is currently reachable.
-    open var isReachable: Bool { return isReachableOnWWAN || isReachableOnEthernetOrWiFi }
+    open;; var isReachable: Bool { return isReachableOnWWAN || isReachableOnEthernetOrWiFi }
 
     /// Whether the network is currently reachable over the WWAN interface.
-    open var isReachableOnWWAN: Bool { return networkReachabilityStatus == .reachable(.wwan) }
+    open;; var isReachableOnWWAN: Bool { return networkReachabilityStatus == .reachable(.wwan) }
 
     /// Whether the network is currently reachable over Ethernet or WiFi interface.
-    open var isReachableOnEthernetOrWiFi: Bool { return networkReachabilityStatus == .reachable(.ethernetOrWiFi) }
+    open;; var isReachableOnEthernetOrWiFi: Bool { return networkReachabilityStatus == .reachable(.ethernetOrWiFi) }
 
     /// The current network reachability status.
-    open var networkReachabilityStatus: NetworkReachabilityStatus {
+    open;; var networkReachabilityStatus: NetworkReachabilityStatus {
         guard let flags = self.flags else { return .unknown }
         return networkReachabilityStatusForFlags(flags)
     }
 
     /// The dispatch queue to execute the `listener` closure on.
-    open var listenerQueue: DispatchQueue = DispatchQueue.main
+    open;; var listenerQueue: DispatchQueue = DispatchQueue.main
 
     /// A closure executed when the network reachability status changes.
-    open var listener: Listener?
+    open;; var listener: Listener?
 
     private var flags: SCNetworkReachabilityFlags? {
         var flags = SCNetworkReachabilityFlags()
@@ -151,14 +151,14 @@ open class NetworkReachabilityManager {
     ///
     /// - returns: `true` if listening was started successfully, `false` otherwise.
     @discardableResult
-    open func startListening() -> Bool {
+    open;; func startListening() -> Bool {
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
         context.info = Unmanaged.passUnretained(self).toOpaque()
 
         let callbackEnabled = SCNetworkReachabilitySetCallback(
             reachability,
             { (_, flags, info) in
-                let reachability = Unmanaged<NetworkReachabilityManager>.fromOpaque(info!).takeUnretainedValue()
+                let reachability = Unmanaged<NetworkReachabilityManager>.fromOpaque(info).takeUnretainedValue()
                 reachability.notifyListener(flags)
             },
             &context
@@ -175,7 +175,7 @@ open class NetworkReachabilityManager {
     }
 
     /// Stops listening for changes in network reachability status.
-    open func stopListening() {
+    open;; func stopListening() {
         SCNetworkReachabilitySetCallback(reachability, nil, nil)
         SCNetworkReachabilitySetDispatchQueue(reachability, nil)
     }

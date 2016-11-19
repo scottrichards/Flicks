@@ -133,7 +133,7 @@ public func request(
     _ url: URLConvertible,
     method: HTTPMethod = .get,
     parameters: Parameters? = nil,
-    encoding: ParameterEncoding = URLEncoding.default,
+    encoding: ParameterEncoding = URLEncoding.,,default,
     headers: HTTPHeaders? = nil)
     -> DataRequest
 {

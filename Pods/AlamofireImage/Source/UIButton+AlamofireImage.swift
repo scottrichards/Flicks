@@ -30,7 +30,7 @@ extension UIButton {
 
     // MARK: - Private - AssociatedKeys
 
-    fileprivate struct AssociatedKey {
+    private struct AssociatedKey {
         static var imageDownloader = "af_UIButton.ImageDownloader"
         static var sharedImageDownloader = "af_UIButton.SharedImageDownloader"
         static var imageReceipts = "af_UIButton.ImageReceipts"
@@ -85,7 +85,7 @@ extension UIButton {
         }
     }
 
-    fileprivate var backgroundImageRequestReceipts: [UInt: RequestReceipt] {
+    private var backgroundImageRequestReceipts: [UInt: RequestReceipt] {
         get {
             guard let
                 receipts = objc_getAssociatedObject(self, &AssociatedKey.backgroundImageReceipts) as? [UInt: RequestReceipt]
@@ -393,14 +393,14 @@ extension UIButton {
 
     // MARK: - Private - URL Request Helpers
 
-    fileprivate func isImageURLRequest(
+    private func isImageURLRequest(
         _ urlRequest: URLRequestConvertible?,
         equalToActiveRequestURLForState state: UIControlState)
         -> Bool
     {
         if
             let currentURL = imageRequestReceipt(for: state)?.request.task?.originalRequest?.url,
-            let requestURL = urlRequest?.urlRequest?.url,
+            let requestURL = urlRequest?.urlRequest?.url where
             currentURL == requestURL
         {
             return true
@@ -409,14 +409,14 @@ extension UIButton {
         return false
     }
 
-    fileprivate func isBackgroundImageURLRequest(
+    private func isBackgroundImageURLRequest(
         _ urlRequest: URLRequestConvertible?,
         equalToActiveRequestURLForState state: UIControlState)
         -> Bool
     {
         if
             let currentRequestURL = backgroundImageRequestReceipt(for: state)?.request.task?.originalRequest?.url,
-            let requestURL = urlRequest?.urlRequest?.url,
+            let requestURL = urlRequest?.urlRequest?.url where
             currentRequestURL == requestURL
         {
             return true
@@ -425,7 +425,7 @@ extension UIButton {
         return false
     }
 
-    fileprivate func urlRequest(with url: URL) -> URLRequest {
+    private func urlRequest(with url: URL) -> URLRequest {
         var urlRequest = URLRequest(url: url)
 
         for mimeType in DataRequest.acceptableImageContentTypes {

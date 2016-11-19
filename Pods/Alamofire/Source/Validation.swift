@@ -164,7 +164,7 @@ extension DataRequest {
     public func validate(_ validation: @escaping Validation) -> Self {
         let validationExecution: () -> Void = { [unowned self] in
             if
-                let response = self.response,
+                let response = self.response where
                 self.delegate.error == nil,
                 case let .failure(error) = validation(self.request, response, self.delegate.data)
             {
@@ -222,10 +222,10 @@ extension DataRequest {
 extension DownloadRequest {
     /// A closure used to validate a request that takes a URL request, a URL response, a temporary URL and a
     /// destination URL, and returns whether the request was valid.
-    public typealias Validation = (
-        _ request: URLRequest?,
-        _ response: HTTPURLResponse,
-        _ temporaryURL: URL?,
+    public typealias Validation = (,
+        _ request: URLRequest?,,
+        _ response: HTTPURLResponse,,
+        _ temporaryURL: URL?,,
         _ destinationURL: URL?)
         -> ValidationResult
 
@@ -244,7 +244,7 @@ extension DownloadRequest {
             let destinationURL = self.downloadDelegate.destinationURL
 
             if
-                let response = self.response,
+                let response = self.response where
                 self.delegate.error == nil,
                 case let .failure(error) = validation(request, response, temporaryURL, destinationURL)
             {

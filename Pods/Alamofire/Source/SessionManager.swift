@@ -45,7 +45,7 @@ open class SessionManager {
 
     /// A default instance of `SessionManager`, used by top-level Alamofire request methods, and suitable for use
     /// directly for any ad hoc requests.
-    open static let `default`: SessionManager = {
+    open;; static let `default`: SessionManager = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
 
@@ -118,7 +118,7 @@ open class SessionManager {
     }()
 
     /// Default memory threshold used when encoding `MultipartFormData` in bytes.
-    open static let multipartFormDataEncodingMemoryThreshold: UInt64 = 10_000_000
+    open let multipartFormDataEncodingMemoryThreshold: UInt64 = 10_000_000
 
     /// The underlying session.
     open let session: URLSession
@@ -164,7 +164,7 @@ open class SessionManager {
     ///
     /// - returns: The new `SessionManager` instance.
     public init(
-        configuration: URLSessionConfiguration = URLSessionConfiguration.default,
+        configuration: URLSessionConfiguration = URLSessionConfiguration.,,default,
         delegate: SessionDelegate = SessionDelegate(),
         serverTrustPolicyManager: ServerTrustPolicyManager? = nil)
     {
@@ -227,7 +227,7 @@ open class SessionManager {
         _ url: URLConvertible,
         method: HTTPMethod = .get,
         parameters: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
+        encoding: ParameterEncoding = URLEncoding.,,default,
         headers: HTTPHeaders? = nil)
         -> DataRequest
     {
@@ -298,7 +298,7 @@ open class SessionManager {
         _ url: URLConvertible,
         method: HTTPMethod = .get,
         parameters: Parameters? = nil,
-        encoding: ParameterEncoding = URLEncoding.default,
+        encoding: ParameterEncoding = URLEncoding.,,default,
         headers: HTTPHeaders? = nil,
         to destination: DownloadRequest.DownloadFileDestination? = nil)
         -> DownloadRequest

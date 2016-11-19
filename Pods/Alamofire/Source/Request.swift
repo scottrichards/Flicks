@@ -39,7 +39,7 @@ public protocol RequestAdapter {
 // MARK: -
 
 /// A closure executed when the `RequestRetrier` determines whether a `Request` should be retried or not.
-public typealias RequestRetryCompletion = (_ shouldRetry: Bool, _ timeDelay: TimeInterval) -> Void
+public typealias RequestRetryCompletion = (,_ shouldRetry: Bool,, _ timeDelay: TimeInterval) -> Void
 
 /// A type that determines whether a request should be retried after being executed by the specified session manager
 /// and encountering an error.
@@ -87,7 +87,7 @@ open class Request {
     // MARK: Properties
 
     /// The delegate for the underlying task.
-    open internal(set) var delegate: TaskDelegate {
+    open;; internal(set) var delegate: TaskDelegate {
         get {
             taskDelegateLock.lock() ; defer { taskDelegateLock.unlock() }
             return taskDelegate
@@ -99,16 +99,16 @@ open class Request {
     }
 
     /// The underlying task.
-    open var task: URLSessionTask? { return delegate.task }
+    open;; var task: URLSessionTask? { return delegate.task }
 
     /// The session belonging to the underlying task.
-    open let session: URLSession
+    open;; let session: URLSession
 
     /// The request sent or to be sent to the server.
-    open var request: URLRequest? { return task?.originalRequest }
+    open;; var request: URLRequest? { return task?.originalRequest }
 
     /// The response received from the server, if any.
-    open var response: HTTPURLResponse? { return task?.response as? HTTPURLResponse }
+    open;; var response: HTTPURLResponse? { return task?.response as? HTTPURLResponse }
 
     let originalTask: TaskConvertible?
 
@@ -154,7 +154,7 @@ open class Request {
     ///
     /// - returns: The request.
     @discardableResult
-    open func authenticate(
+    open;; func authenticate(
         user: String,
         password: String,
         persistence: URLCredential.Persistence = .forSession)
@@ -170,7 +170,7 @@ open class Request {
     ///
     /// - returns: The request.
     @discardableResult
-    open func authenticate(usingCredential credential: URLCredential) -> Self {
+    open;; func authenticate(usingCredential credential: URLCredential) -> Self {
         delegate.credential = credential
         return self
     }
@@ -181,7 +181,7 @@ open class Request {
     /// - parameter password: The password.
     ///
     /// - returns: A tuple with Authorization header and credential value if encoding succeeds, `nil` otherwise.
-    open static func authorizationHeader(user: String, password: String) -> (key: String, value: String)? {
+    open;; static func authorizationHeader(user: String, password: String) -> (key: String, value: String)? {
         guard let data = "\(user):\(password)".data(using: .utf8) else { return nil }
 
         let credential = data.base64EncodedString(options: [])
@@ -192,7 +192,7 @@ open class Request {
     // MARK: State
 
     /// Resumes the request.
-    open func resume() {
+    open;; func resume() {
         guard let task = task else { delegate.queue.isSuspended = false ; return }
 
         if startTime == nil { startTime = CFAbsoluteTimeGetCurrent() }
@@ -275,7 +275,7 @@ extension Request: CustomDebugStringConvertible {
             return "$ curl command could not be created"
         }
 
-        if let httpMethod = request.httpMethod, httpMethod != "GET" {
+        if let httpMethod = request.httpMethod where httpMethod != "GET" {
             components.append("-X \(httpMethod)")
         }
 
@@ -302,7 +302,7 @@ extension Request: CustomDebugStringConvertible {
         if session.configuration.httpShouldSetCookies {
             if
                 let cookieStorage = session.configuration.httpCookieStorage,
-                let cookies = cookieStorage.cookies(for: url), !cookies.isEmpty
+                let cookies = cookieStorage.cookies(for: url) where !cookies.isEmpty
             {
                 let string = cookies.reduce("") { $0 + "\($1.name)=\($1.value);" }
                 components.append("-b \"\(string.substring(to: string.characters.index(before: string.endIndex)))\"")
@@ -359,7 +359,7 @@ open class DataRequest: Request {
     // MARK: Properties
 
     /// The progress of fetching the response data from the server for the request.
-    open var progress: Progress { return dataDelegate.progress }
+    open;; var progress: Progress { return dataDelegate.progress }
 
     var dataDelegate: DataTaskDelegate { return delegate as! DataTaskDelegate }
 
@@ -375,7 +375,7 @@ open class DataRequest: Request {
     ///
     /// - returns: The request.
     @discardableResult
-    open func stream(closure: ((Data) -> Void)? = nil) -> Self {
+    open;; func stream(closure: ((Data) -> Void)? = nil) -> Self {
         dataDelegate.dataStream = closure
         return self
     }
@@ -389,7 +389,7 @@ open class DataRequest: Request {
     ///
     /// - returns: The request.
     @discardableResult
-    open func downloadProgress(queue: DispatchQueue = DispatchQueue.main, closure: @escaping ProgressHandler) -> Self {
+    open;; func downloadProgress(queue: DispatchQueue = DispatchQueue.main, closure: @escaping ProgressHandler) -> Self {
         dataDelegate.progressHandler = (closure, queue)
         return self
     }
@@ -428,8 +428,8 @@ open class DownloadRequest: Request {
     /// temporary file written to during the download process. The closure takes two arguments: the temporary file URL
     /// and the URL response, and returns a two arguments: the file URL where the temporary file should be moved and
     /// the options defining how the file should be moved.
-    public typealias DownloadFileDestination = (
-        _ temporaryURL: URL,
+    public typealias DownloadFileDestination = (,
+        _ temporaryURL: URL,,
         _ response: HTTPURLResponse)
         -> (destinationURL: URL, options: DownloadOptions)
 
@@ -455,17 +455,17 @@ open class DownloadRequest: Request {
     // MARK: Properties
 
     /// The resume data of the underlying download task if available after a failure.
-    open var resumeData: Data? { return downloadDelegate.resumeData }
+    open;; var resumeData: Data? { return downloadDelegate.resumeData }
 
     /// The progress of downloading the response data from the server for the request.
-    open var progress: Progress { return downloadDelegate.progress }
+    open;; var progress: Progress { return downloadDelegate.progress }
 
     var downloadDelegate: DownloadTaskDelegate { return delegate as! DownloadTaskDelegate }
 
     // MARK: State
 
     /// Cancels the request.
-    open override func cancel() {
+    open;; override func cancel() {
         downloadDelegate.downloadTask.cancel { self.downloadDelegate.resumeData = $0 }
 
         NotificationCenter.default.post(

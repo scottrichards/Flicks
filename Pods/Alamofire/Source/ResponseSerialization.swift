@@ -261,7 +261,7 @@ extension Request {
     public static func serializeResponseData(response: HTTPURLResponse?, data: Data?, error: Error?) -> Result<Data> {
         guard error == nil else { return .failure(error!) }
 
-        if let response = response, emptyDataStatusCodes.contains(response.statusCode) { return .success(Data()) }
+        if let response = response where emptyDataStatusCodes.contains(response.statusCode) { return .success(Data()) }
 
         guard let validData = data else {
             return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
@@ -361,7 +361,7 @@ extension Request {
     {
         guard error == nil else { return .failure(error!) }
 
-        if let response = response, emptyDataStatusCodes.contains(response.statusCode) { return .success("") }
+        if let response = response where emptyDataStatusCodes.contains(response.statusCode) { return .success("") }
 
         guard let validData = data else {
             return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
@@ -369,7 +369,7 @@ extension Request {
 
         var convertedEncoding = encoding
 
-        if let encodingName = response?.textEncodingName as CFString!, convertedEncoding == nil {
+        if let encodingName = response?.textEncodingName as CFString! where convertedEncoding == nil {
             convertedEncoding = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(
                 CFStringConvertIANACharSetNameToEncoding(encodingName))
             )
@@ -491,9 +491,9 @@ extension Request {
     {
         guard error == nil else { return .failure(error!) }
 
-        if let response = response, emptyDataStatusCodes.contains(response.statusCode) { return .success(NSNull()) }
+        if let response = response where emptyDataStatusCodes.contains(response.statusCode) { return .success(NSNull()) }
 
-        guard let validData = data, validData.count > 0 else {
+        guard let validData = data where validData.count > 0 else {
             return .failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
         }
 
@@ -612,9 +612,9 @@ extension Request {
     {
         guard error == nil else { return .failure(error!) }
 
-        if let response = response, emptyDataStatusCodes.contains(response.statusCode) { return .success(NSNull()) }
+        if let response = response where emptyDataStatusCodes.contains(response.statusCode) { return .success(NSNull()) }
 
-        guard let validData = data, validData.count > 0 else {
+        guard let validData = data where validData.count > 0 else {
             return .failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
         }
 
